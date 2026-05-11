@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mercy — Гоо Сайхан</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF7F2;
+    --cream2: #F3EDE3;
+    --cream3: #EBE3D5;
+    --blush: #E8C9BC;
+    --blush2: #D4A090;
+    --blush3: #C08070;
+    --sage: #8A9E8C;
+    --sage2: #6B7E6D;
+    --dark: #1C1410;
+    --mid: #5C4A3A;
+    --muted: #9A8878;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--cream2);
+    padding: 0 48px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--dark);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--blush2); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+
+  .nav-links a:hover { color: var(--dark); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--mid);
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-btn:hover { color: var(--dark); background: var(--cream); }
+
+  .cart-wrap { position: relative; display: inline-flex; }
+
+  .cart-dot {
+    position: absolute;
+    top: 6px; right: 6px;
+    width: 7px; height: 7px;
+    background: var(--blush2);
+    border-radius: 50%;
+    border: 1.5px solid var(--white);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    width: 22px; height: 1.5px;
+    background: var(--dark);
+    display: block;
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    background: var(--white);
+    border-bottom: 1px solid var(--cream2);
+    padding: 20px 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-size: 14px;
+    color: var(--mid);
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--cream2);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
+    background: var(--white);
+  }
+
+  .hero-left {
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage2);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 400;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 36px; height: 1px;
+    background: var(--sage);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 5.5vw, 80px);
+    font-weight: 300;
+    line-height: 1.06;
+    letter-spacing: -1px;
+    color: var(--dark);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--blush2);
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 380px;
+    line-height: 1.85;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+  }
+
+  .btn-fill {
+    background: var(--dark);
+    color: var(--white);
+    border: none;
+    padding: 15px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+
+  .btn-fill:hover { background: var(--mid); }
+
+  .btn-ghost {
+    background: none;
+    color: var(--dark);
+    border: 1px solid rgba(92, 74, 58, 0.3);
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+
+  .btn-ghost:hover { border-color: var(--dark); }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-right {
+    background: var(--cream2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+  }
+
+  .hero-visual {
+    width: 300px; height: 400px;
+    background: var(--white);
+    border-radius: 150px 150px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .product-bottle {
+    width: 88px; height: 172px;
+    background: linear-gradient(160deg, #E8C9BC 0%, #C08070 100%);
+    border-radius: 44px 44px 18px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: inset -10px 0 24px rgba(255,255,255,0.25);
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .bottle-cap {
+    position: absolute;
+    top: -16px; left: 50%;
+    transform: translateX(-50%);
+    width: 36px; height: 20px;
+    background: var(--mid);
+    border-radius: 4px 4px 0 0;
+  }
+
+  .bottle-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .hero-float {
+    position: absolute;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 12px;
+    border: 1px solid var(--cream3);
+    z-index: 3;
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  .hero-float.f1 { top: 72px; right: 52px; animation-delay: 0.3s; }
+  .hero-float.f2 { bottom: 96px; left: 48px; animation-delay: 0.5s; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .float-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--dark);
+    display: block;
+    line-height: 1;
+  }
+
+  .float-lbl { color: var(--muted); font-size: 11px; letter-spacing: 0.5px; margin-top: 3px; }
+
+  .hero-circle {
+    position: absolute;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(138,158,140,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: slowspin 30s linear infinite;
+  }
+
+  .hero-circle2 {
+    position: absolute;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,160,144,0.15);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: slowspin 40s linear infinite reverse;
+  }
+
+  @keyframes slowspin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* ===== MARQUEE ===== */
+  .marquee-section {
+    background: var(--dark);
+    padding: 16px 0;
+    overflow: hidden;
+  }
+
+  .marquee-inner {
+    display: flex;
+    gap: 56px;
+    white-space: nowrap;
+    animation: marquee 22s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    flex-shrink: 0;
+    font-weight: 300;
+  }
+
+  .marquee-dot { color: var(--blush); margin: 0 6px; }
+
+  /* ===== SECTIONS ===== */
+  .section { padding: 88px 48px; }
+
+  .section-head { text-align: center; margin-bottom: 60px; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage2);
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .section-title em { font-style: italic; color: var(--blush2); }
+
+  /* ===== CATEGORIES ===== */
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
+    gap: 16px;
+  }
+
+  .cat-card {
+    background: var(--white);
+    border: 1px solid var(--cream2);
+    border-radius: 4px;
+    padding: 32px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .cat-card:hover {
+    border-color: var(--blush2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(212,160,144,0.12);
+  }
+
+  .cat-icon { font-size: 36px; margin-bottom: 14px; display: block; }
+
+  .cat-name {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-weight: 500;
+  }
+
+  .cat-count { font-size: 12px; color: var(--muted); margin-top: 5px; }
+
+  /* ===== PRODUCTS ===== */
+  .products-section { background: var(--cream2); }
+
+  .products-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 36px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: none;
+    border: 1px solid var(--cream3);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: var(--white);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2px;
+  }
+
+  .prod-card {
+    background: var(--white);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .prod-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(28,20,16,0.10); }
+
+  .prod-badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    z-index: 2;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 1px;
+    font-weight: 500;
+  }
+
+  .badge-new { background: var(--sage); color: var(--white); }
+  .badge-sale { background: var(--blush2); color: var(--white); }
+  .badge-best { background: var(--dark); color: var(--white); }
+
+  .prod-fav {
+    position: absolute;
+    top: 14px; right: 14px;
+    z-index: 2;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--cream2);
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--muted);
+  }
+
+  .prod-fav:hover { color: var(--blush2); border-color: var(--blush); }
+
+  .prod-img-wrap {
+    height: 280px;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 72px;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+  }
+
+  .prod-card:hover .prod-img-wrap { transform: scale(1.03); }
+
+  .prod-body { padding: 22px 22px 26px; }
+
+  .prod-brand {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 7px;
+  }
+
+  .prod-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .prod-rating {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 18px;
+  }
+
+  .stars { color: var(--blush2); font-size: 13px; letter-spacing: 2px; }
+
+  .rating-n { font-size: 12px; color: var(--muted); }
+
+  .prod-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--cream2);
+    padding-top: 18px;
+  }
+
+  .prod-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--dark);
+  }
+
+  .prod-price-old {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: line-through;
+    display: block;
+    line-height: 1.2;
+  }
+
+  .btn-add-cart {
+    background: var(--dark);
+    color: var(--white);
+    border: none;
+    width: 38px; height: 38px;
+    border-radius: 2px;
+    font-size: 19px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .btn-add-cart:hover { background: var(--mid); }
+
+  /* ===== RITUAL ===== */
+  .ritual-section {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+  }
+
+  .ritual-img {
+    background: var(--cream2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ritual-deco {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,160,144,0.2);
+    top: 10%; right: -60px;
+  }
+
+  .ritual-content {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ritual-steps {
+    margin: 36px 0 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .ritual-step { display: flex; gap: 20px; align-items: flex-start; }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--blush);
+    line-height: 1;
+    min-width: 32px;
+    margin-top: -4px;
+  }
+
+  .step-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 5px;
+    letter-spacing: 0.3px;
+  }
+
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* ===== REVIEWS ===== */
+  .reviews-section { background: var(--cream); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--cream2);
+    border-radius: 4px;
+    padding: 28px;
+    transition: all 0.2s;
+  }
+
+  .review-card:hover { transform: translateY(-2px); border-color: var(--blush); }
+
+  .review-stars { color: var(--blush2); font-size: 14px; margin-bottom: 16px; letter-spacing: 3px; }
+
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1.65;
+    margin-bottom: 22px;
+    font-style: italic;
+  }
+
+  .reviewer { display: flex; align-items: center; gap: 12px; }
+
+  .reviewer-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--cream2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--mid);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .reviewer-name { font-size: 13px; font-weight: 500; color: var(--dark); }
+  .reviewer-loc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* ===== BANNER ===== */
+  .banner-section {
+    background: var(--dark);
+    padding: 100px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .banner-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(212,160,144,0.1);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .banner-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    position: relative;
+    line-height: 1.1;
+  }
+
+  .banner-section h2 em { font-style: italic; color: var(--blush); }
+
+  .banner-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+    max-width: 420px;
+    margin: 0 auto 44px;
+    line-height: 1.85;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .banner-form {
+    display: flex;
+    gap: 0;
+    max-width: 420px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .banner-form input {
+    flex: 1;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-right: none;
+    padding: 14px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--white);
+    outline: none;
+    border-radius: 2px 0 0 2px;
+  }
+
+  .banner-form input::placeholder { color: rgba(255,255,255,0.3); }
+
+  .banner-form button {
+    background: var(--blush2);
+    color: var(--white);
+    border: 1px solid var(--blush2);
+    padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s;
+    border-radius: 0 2px 2px 0;
+    font-weight: 400;
+  }
+
+  .banner-form button:hover { background: var(--blush3); }
+
+  /* ===== BRANDS ===== */
+  .brands-section {
+    background: var(--white);
+    border-top: 1px solid var(--cream2);
+    padding: 48px;
+  }
+
+  .brands-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .brand-item {
+    padding: 16px 32px;
+    border: 1px solid var(--cream2);
+    border-radius: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--cream3);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .brand-item:hover { color: var(--mid); border-color: var(--cream3); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark);
+    padding: 72px 48px 36px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+
+  .footer-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .footer-logo-text span { color: var(--blush); }
+
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.85;
+    max-width: 240px;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .social-row { display: flex; gap: 8px; }
+
+  .soc-btn {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: none;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .soc-btn:hover { border-color: var(--blush); color: var(--blush); }
+
+  .footer-col h4 {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col li { margin-bottom: 11px; }
+
+  .footer-col a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 300;
+  }
+
+  .footer-col a:hover { color: rgba(255,255,255,0.8); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.5px; }
+
+  .footer-legal { display: flex; gap: 24px; }
+
+  .footer-legal a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 360px; }
+    .hero-left { padding: 56px 24px 40px; }
+    .ritual-section { grid-template-columns: 1fr; }
+    .ritual-img { min-height: 280px; font-size: 72px; }
+    .ritual-content { padding: 48px 24px; }
+    .section { padding: 64px 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    footer { padding: 56px 24px 28px; }
+    .banner-section { padding: 72px 24px; }
+    .brands-section { padding: 40px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-left { padding: 40px 20px 32px; }
+    .hero-float { display: none; }
+    .hero-stats { gap: 28px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .banner-form { flex-direction: column; }
+    .banner-form input, .banner-form button { border-radius: 2px; }
+    .banner-form input { border-right: 1px solid rgba(255,255,255,0.15); border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Лу<span>ми</span>нэ</a>
+  <ul class="nav-links">
+    <li><a href="#">Шинэ</a></li>
+    <li><a href="#">Бүтээгдэхүүн</a></li>
+    <li><a href="#">Арьсны тухай</a></li>
+    <li><a href="#">Брэнд</a></li>
+    <li><a href="#">Урамшуулал</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="icon-btn" aria-label="хайх"><i class="ti ti-search"></i></button>
+    <button class="icon-btn" aria-label="хүссэмж"><i class="ti ti-heart"></i></button>
+    <div class="cart-wrap">
+      <button class="icon-btn" aria-label="сагс"><i class="ti ti-shopping-bag"></i></button>
+      <span class="cart-dot"></span>
+    </div>
+    <button class="icon-btn" aria-label="хэрэглэгч"><i class="ti ti-user"></i></button>
+    <button class="hamburger" aria-label="цэс" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#">Шинэ</a>
+  <a href="#">Бүтээгдэхүүн</a>
+  <a href="#">Арьсны тухай</a>
+  <a href="#">Брэнд</a>
+  <a href="#">Урамшуулал</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">2025 Шинэ Цуврал</div>
+    <h1>Арьсны<br>гоо сайхан<br><em>байгалиас</em></h1>
+    <p class="hero-desc">Монгол байгалийн ургамлаас гаргаж авсан цэвэр найрлагатай, арьсанд нэвт шингэх хөнгөн бүтээгдэхүүн.</p>
+    <div class="hero-actions">
+      <button class="btn-fill">Дэлгэц үзэх</button>
+      <button class="btn-ghost">Судалж мэдэх</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Байгалийн гаралтай</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Дундаж үнэлгээ</div>
+      </div>
+      <div>
+        <div class="stat-num">1.2к+</div>
+        <div class="stat-label">Сэтгэгдэл</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-circle"></div>
+    <div class="hero-circle2"></div>
+    <div class="hero-visual">
+      <div class="product-bottle">
+        <div class="bottle-cap"></div>
+        <div class="bottle-label">Луминэ<br>Serum</div>
+      </div>
+    </div>
+    <div class="hero-float f1">
+      <span class="float-num">↑ 37%</span>
+      <div class="float-lbl">Чийг барих чадвар</div>
+    </div>
+    <div class="hero-float f2">
+      <span class="float-num">4.9 ★</span>
+      <div class="float-lbl">1,200+ сэтгэгдэл</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-inner">
+    <span class="marquee-item">Байгалийн найрлага</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Крафт арга</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Амьтан туршилтгүй</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Монгол бренд</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Дерматологич зөвлөмж</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Байгалийн найрлага</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Крафт арга</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Амьтан туршилтгүй</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Монгол бренд</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Дерматологич зөвлөмж</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section" style="background: var(--white);">
+  <div class="section-head">
+    <div class="section-eyebrow">Ангилал</div>
+    <h2 class="section-title">Арьсандаа <em>тохирох</em> бүтээгдэхүүн</h2>
+  </div>
+  <div class="cats-grid">
+    <a href="#" class="cat-card"><span class="cat-icon">💧</span><div class="cat-name">Цэвэрлэгч</div><div class="cat-count">18 бүтээгдэхүүн</div></a>
+    <a href="#" class="cat-card"><span class="cat-icon">✨</span><div class="cat-name">Сэрум</div><div class="cat-count">24 бүтээгдэхүүн</div></a>
+    <a href="#" class="cat-card"><span class="cat-icon">🌿</span><div class="cat-name">Чийгшүүлэгч</div><div class="cat-count">31 бүтээгдэхүүн</div></a>
+    <a href="#" class="cat-card"><span class="cat-icon">☀️</span><div class="cat-name">Наранд хамгаалах</div><div class="cat-count">12 бүтээгдэхүүн</div></a>
+    <a href="#" class="cat-card"><span class="cat-icon">🌸</span><div class="cat-name">Нүүрний маск</div><div class="cat-count">15 бүтээгдэхүүн</div></a>
+    <a href="#" class="cat-card"><span class="cat-icon">👁️</span><div class="cat-name">Нүдний тойрог</div><div class="cat-count">9 бүтээгдэхүүн</div></a>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products-section">
+  <div class="section-head">
+    <div class="section-eyebrow">Шилдэг бүтээгдэхүүн</div>
+    <h2 class="section-title">Хамгийн их <em>захиалагддаг</em></h2>
+  </div>
+  <div class="products-filters">
+    <button class="filter-btn active" onclick="setFilter(this)">Бүгд</button>
+    <button class="filter-btn" onclick="setFilter(this)">Нүүр арьс</button>
+    <button class="filter-btn" onclick="setFilter(this)">Биеийн арьс</button>
+    <button class="filter-btn" onclick="setFilter(this)">Нүд & уруул</button>
+    <button class="filter-btn" onclick="setFilter(this)">Урамшуулал</button>
+  </div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <span class="prod-badge badge-best">Шилдэг</span>
+      <button class="prod-fav" aria-label="хүссэмжид нэмэх"><i class="ti ti-heart"></i></button>
+      <div class="prod-img-wrap">🧴</div>
+      <div class="prod-body">
+        <div class="prod-brand">Луминэ</div>
+        <div class="prod-name">Нойрны тэжээллэг сэрум</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-n">(284)</span></div>
+        <div class="prod-foot">
+          <div class="prod-price">₮89,000</div>
+          <button class="btn-add-cart" aria-label="сагсанд нэмэх"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-badge badge-new">Шинэ</span>
+      <button class="prod-fav" aria-label="хүссэмжид нэмэх"><i class="ti ti-heart"></i></button>
+      <div class="prod-img-wrap">🌿</div>
+      <div class="prod-body">
+        <div class="prod-brand">Луминэ</div>
+        <div class="prod-name">Алоэ цэвэрлэгч гель</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-n">(127)</span></div>
+        <div class="prod-foot">
+          <div class="prod-price">₮52,000</div>
+          <button class="btn-add-cart" aria-label="сагсанд нэмэх"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-badge badge-sale">−20%</span>
+      <button class="prod-fav" aria-label="хүссэмжид нэмэх"><i class="ti ti-heart"></i></button>
+      <div class="prod-img-wrap">💦</div>
+      <div class="prod-body">
+        <div class="prod-brand">Луминэ</div>
+        <div class="prod-name">Хиалурон чийглэгч крем</div>
+        <div class="prod-rating"><span class="stars">★★★★☆</span><span class="rating-n">(196)</span></div>
+        <div class="prod-foot">
+          <div>
+            <span class="prod-price-old">₮75,000</span>
+            <span class="prod-price">₮60,000</span>
+          </div>
+          <button class="btn-add-cart" aria-label="сагсанд нэмэх"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <button class="prod-fav" aria-label="хүссэмжид нэмэх"><i class="ti ti-heart"></i></button>
+      <div class="prod-img-wrap">☀️</div>
+      <div class="prod-body">
+        <div class="prod-brand">Луминэ</div>
+        <div class="prod-name">SPF 50+ Нарны хамгаалалт</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-n">(312)</span></div>
+        <div class="prod-foot">
+          <div class="prod-price">₮68,000</div>
+          <button class="btn-add-cart" aria-label="сагсанд нэмэх"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-badge badge-new">Шинэ</span>
+      <button class="prod-fav" aria-label="хүссэмжид нэмэх"><i class="ti ti-heart"></i></button>
+      <div class="prod-img-wrap">🌸</div>
+      <div class="prod-body">
+        <div class="prod-brand">Луминэ</div>
+        <div class="prod-name">Розе тонер шүршигч</div>
+        <div class="prod-rating"><span class="stars">★★★★☆</span><span class="rating-n">(88)</span></div>
+        <div class="prod-foot">
+          <div class="prod-price">₮45,000</div>
+          <button class="btn-add-cart" aria-label="сагсанд нэмэх"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-badge badge-sale">−15%</span>
+      <button class="prod-fav" aria-label="хүссэмжид нэмэх"><i class="ti ti-heart"></i></button>
+      <div class="prod-img-wrap">🫧</div>
+      <div class="prod-body">
+        <div class="prod-brand">Луминэ</div>
+        <div class="prod-name">Нүүрний нимгэн тос</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-n">(154)</span></div>
+        <div class="prod-foot">
+          <div>
+            <span class="prod-price-old">₮94,000</span>
+            <span class="prod-price">₮80,000</span>
+          </div>
+          <button class="btn-add-cart" aria-label="сагсанд нэмэх"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <button class="prod-fav" aria-label="хүссэмжид нэмэх"><i class="ti ti-heart"></i></button>
+      <div class="prod-img-wrap">🫐</div>
+      <div class="prod-body">
+        <div class="prod-brand">Луминэ</div>
+        <div class="prod-name">Нүдний эргэн тойрны крем</div>
+        <div class="prod-rating"><span class="stars">★★★★☆</span><span class="rating-n">(71)</span></div>
+        <div class="prod-foot">
+          <div class="prod-price">₮72,000</div>
+          <button class="btn-add-cart" aria-label="сагсанд нэмэх"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-badge badge-best">Шилдэг</span>
+      <button class="prod-fav" aria-label="хүссэмжид нэмэх"><i class="ti ti-heart"></i></button>
+      <div class="prod-img-wrap">🍃</div>
+      <div class="prod-body">
+        <div class="prod-brand">Луминэ</div>
+        <div class="prod-name">Хасах маск — нүүрний шавар</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-n">(203)</span></div>
+        <div class="prod-foot">
+          <div class="prod-price">₮55,000</div>
+          <button class="btn-add-cart" aria-label="сагсанд нэмэх"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RITUAL -->
+<section class="ritual-section">
+  <div class="ritual-img">
+    🌿
+    <div class="ritual-deco"></div>
+  </div>
+  <div class="ritual-content">
+    <div class="section-eyebrow">Өдөр тутмын ритуал</div>
+    <h2 class="section-title" style="text-align:left;">Дөрвөн<br><em>алхам</em> бүтэн</h2>
+    <div class="ritual-steps">
+      <div class="ritual-step">
+        <span class="step-num">01</span>
+        <div>
+          <div class="step-title">Цэвэрлэх</div>
+          <div class="step-desc">Нүүрийг зөөлөн цэвэрлэгч гелээр угааж, хоног тутмын хог бохирыг арилгана.</div>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="step-num">02</span>
+        <div>
+          <div class="step-title">Тонер хэрэглэх</div>
+          <div class="step-desc">Тонер нь арьсны pH тэнцвэрийг хэвийн байлгаж, дараагийн бүтээгдэхүүнийг сайн шингээхэд бэлтгэнэ.</div>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="step-num">03</span>
+        <div>
+          <div class="step-title">Сэрум нэмэх</div>
+          <div class="step-desc">Тэжээллэг сэрум нь арьсны гүнд нэвтэрч, бодисын солилцоог идэвхжүүлнэ.</div>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="step-num">04</span>
+        <div>
+          <div class="step-title">Чийгшүүлэх & хамгаалах</div>
+          <div class="step-desc">Эцэст нь чийглэгч крем болон нарны хамгаалалтаар арьсаа тэтгэж, хамгаалаарай.</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-fill">Бүтэн цувралыг үзэх</button>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews-section">
+  <div class="section-head">
+    <div class="section-eyebrow">Сэтгэгдэл</div>
+    <h2 class="section-title">Хэрэглэгчид <em>юу гэж</em> хэлэв</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Нойрны сэрумийг хэрэглэж эхэлснээс хойш арьс маань гайхалтай зөөлөрсөн. Нэг сарын дотор ялгаа мэдрэгдлээ!"</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">БО</div>
+        <div>
+          <div class="reviewer-name">Болормаа О.</div>
+          <div class="reviewer-loc">Улаанбаатар</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Байгалийн найрлагатай гэдэг нь маш чухал байсан. Арьсанд хэт нэвтэрдэг бусад брэндүүдтэй харьцуулахад энэ бүтээгдэхүүн маш зөөлөн."</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">НГ</div>
+        <div>
+          <div class="reviewer-name">Нарантуяа Г.</div>
+          <div class="reviewer-loc">Эрдэнэт</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★☆</div>
+      <div class="review-text">"SPF крем нь хөнгөн бөгөөд нүүрэн дээр цагаан мөр үлдэхгүй. Зун бол заавал авч явдаг бүтээгдэхүүн болсон."</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">СД</div>
+        <div>
+          <div class="reviewer-name">Сарантуяа Д.</div>
+          <div class="reviewer-loc">Дархан</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-section">
+  <div class="brands-row">
+    <div class="brand-item">Innisfree</div>
+    <div class="brand-item">Laneige</div>
+    <div class="brand-item">COSRX</div>
+    <div class="brand-item">Sulwhasoo</div>
+    <div class="brand-item">Anua</div>
+    <div class="brand-item">Some By Mi</div>
+  </div>
+</div>
+
+<!-- EMAIL BANNER -->
+<section class="banner-section">
+  <div class="banner-circle" style="width:300px;height:300px;"></div>
+  <div class="banner-circle" style="width:500px;height:500px;"></div>
+  <h2>Арьсны<br><em>нууц</em> мэдэр</h2>
+  <p class="banner-desc">Шинэ бүтээгдэхүүн, арьсны мэдлэг болон онцгой урамшуулалуудаас хамгийн түрүүн мэдэгдэх имэйл хүлээн авна.</p>
+  <div class="banner-form">
+    <input type="email" placeholder="Имэйл хаягаа оруулна уу...">
+    <button type="button">Бүртгүүлэх</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo-text">Лу<span>ми</span>нэ</span>
+      <p>Монгол байгалийн ухааныг орчин үеийн гоо сайхны шинжлэх ухаантай хослуулсан арьсны бүтээгдэхүүний брэнд.</p>
+      <div class="social-row">
+        <button class="soc-btn" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></button>
+        <button class="soc-btn" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></button>
+        <button class="soc-btn" aria-label="TikTok"><i class="ti ti-brand-tiktok"></i></button>
+        <button class="soc-btn" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Бүтээгдэхүүн</h4>
+      <ul>
+        <li><a href="#">Цэвэрлэгч</a></li>
+        <li><a href="#">Сэрум</a></li>
+        <li><a href="#">Чийгшүүлэгч</a></li>
+        <li><a href="#">Маск</a></li>
+        <li><a href="#">Наранд хамгаалах</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Тусламж</h4>
+      <ul>
+        <li><a href="#">Захиалга хянах</a></li>
+        <li><a href="#">Буцаалт & Солилцоо</a></li>
+        <li><a href="#">Хүргэлтийн нөхцөл</a></li>
+        <li><a href="#">Арьсны тест</a></li>
+        <li><a href="#">Холбоо барих</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Брэндийн тухай</h4>
+      <ul>
+        <li><a href="#">Манай тухай</a></li>
+        <li><a href="#">Найрлагын нууц</a></li>
+        <li><a href="#">Амьтан туршилтгүй</a></li>
+        <li><a href="#">Байгаль хамгаалал</a></li>
+        <li><a href="#">Хамтрагчид</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Луминэ. Бүх эрх хуулиар хамгаалагдсан.</div>
+    <div class="footer-legal">
+      <a href="#">Нууцлалын бодлого</a>
+      <a href="#">Үйлчилгээний нөхцөл</a>
+      <a href="#">Cookie тохиргоо</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setFilter(btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  document.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.innerHTML = '<i class="ti ti-check"></i>';
+      this.style.background = 'var(--sage)';
+      setTimeout(() => {
+        this.innerHTML = '<i class="ti ti-plus"></i>';
+        this.style.background = 'var(--dark)';
+      }, 1500);
+    });
+  });
+
+  document.querySelectorAll('.prod-fav').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const icon = this.querySelector('i');
+      if (icon.classList.contains('ti-heart')) {
+        icon.classList.remove('ti-heart');
+        icon.classList.add('ti-heart-filled');
+        this.style.color = 'var(--blush2)';
+      } else {
+        icon.classList.remove('ti-heart-filled');
+        icon.classList.add('ti-heart');
+        this.style.color = '';
+      }
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.prod-card, .review-card, .cat-card, .ritual-step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

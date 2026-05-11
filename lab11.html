@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 11 - FileReader</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #020617);
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .main-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 45px 15px;
+    }
+
+    .header-box {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header-box h1 {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .header-box p {
+      color: #cbd5e1;
+      font-size: 17px;
+    }
+
+    .lab-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 25px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      height: 100%;
+    }
+
+    .lab-card h3 {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .lab-card p {
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+
+    .upload-box {
+      border: 2px dashed rgba(255, 255, 255, 0.35);
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
+      margin-top: 18px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .form-control {
+      border-radius: 12px;
+      padding: 11px;
+      border: none;
+    }
+
+    .preview-area {
+      margin-top: 20px;
+      min-height: 240px;
+      border-radius: 18px;
+      background-color: rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 15px;
+    }
+
+    #imagePreview {
+      max-width: 100%;
+      max-height: 360px;
+      border-radius: 16px;
+      display: none;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .empty-text {
+      color: #94a3b8;
+      font-size: 15px;
+    }
+
+    .file-info {
+      margin-top: 15px;
+      padding: 12px 15px;
+      border-radius: 14px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+      font-size: 14px;
+      display: none;
+      word-break: break-word;
+    }
+
+    .table-wrapper {
+      margin-top: 20px;
+      max-height: 420px;
+      overflow: auto;
+      border-radius: 16px;
+      background: white;
+      padding: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #111827;
+      font-size: 14px;
+    }
+
+    th {
+      background-color: #111827;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 9px 12px;
+      text-align: left;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f1f5f9;
+    }
+
+    .badge-lab {
+      display: inline-block;
+      background-color: #22c55e;
+      color: #052e16;
+      padding: 6px 13px;
+      border-radius: 50px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .note-box {
+      margin-top: 35px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 18px;
+      border-radius: 18px;
+      color: #dcfce7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="header-box">
+      <span class="badge-lab">FileReader()</span>
+      <h1>Lab 11</h1>
+      <p>Upload хийсэн зураг болон Excel file-ийн өгөгдлийг дэлгэцэнд харуулах</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Image Upload -->
+      <div class="col-lg-6">
+        <div class="lab-card">
+          <h3>1. Зураг upload хийх</h3>
+          <p>
+            Зураг сонгоход FileReader ашиглан browser дээр шууд preview байдлаар харуулна.
+          </p>
+
+          <div class="upload-box">
+            <label for="imageInput" class="form-label fw-bold">
+              Зураг сонгох
+            </label>
+
+            <input
+              type="file"
+              id="imageInput"
+              class="form-control"
+              accept="image/*"
+            >
+          </div>
+
+          <div id="imageInfo" class="file-info"></div>
+
+          <div class="preview-area">
+            <span id="imageEmptyText" class="empty-text">
+              Энд upload хийсэн зураг харагдана
+            </span>
+
+            <img id="imagePreview" alt="Uploaded image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Excel Upload -->
+      <div class="col-lg-6">
+        <div class="lab-card">
+          <h3>2. Excel file upload хийх</h3>
+          <p>
+            Excel file сонгоход эхний sheet-ийн өгөгдлийг HTML хүснэгт болгож харуулна.
+          </p>
+
+          <div class="upload-box">
+            <label for="excelInput" class="form-label fw-bold">
+              Excel file сонгох
+            </label>
+
+            <input
+              type="file"
+              id="excelInput"
+              class="form-control"
+              accept=".xlsx, .xls"
+            >
+          </div>
+
+          <div id="excelInfo" class="file-info"></div>
+
+          <div id="tableContainer" class="table-wrapper">
+            <p class="empty-text text-center mt-3">
+              Энд Excel file-ийн хүснэгт харагдана
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>Тайлбар:</strong>
+      Энэ лабораторид JavaScript-ийн <code>FileReader()</code> объектыг ашиглан хэрэглэгчийн upload хийсэн файлыг browser дотор уншиж байна.
+    </div>
+  </div>
+
+  <!-- Excel унших XLSX library -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+  <script>
+    // ==========================
+    // 1. Зураг upload хийж харуулах
+    // ==========================
+
+    const imageInput = document.getElementById("imageInput");
+    const imagePreview = document.getElementById("imagePreview");
+    const imageEmptyText = document.getElementById("imageEmptyText");
+    const imageInfo = document.getElementById("imageInfo");
+
+    imageInput.addEventListener("change", function () {
+      const file = this.files[0];
+
+      if (!file) {
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        imagePreview.src = event.target.result;
+        imagePreview.style.display = "block";
+        imageEmptyText.style.display = "none";
+
+        imageInfo.style.display = "block";
+        imageInfo.innerHTML = `
+          <strong>Файлын нэр:</strong> ${file.name}<br>
+          <strong>Файлын төрөл:</strong> ${file.type}<br>
+          <strong>Файлын хэмжээ:</strong> ${(file.size / 1024).toFixed(2)} KB
+        `;
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    // ==========================
+    // 2. Excel file upload хийж хүснэгт харуулах
+    // ==========================
+
+    const excelInput = document.getElementById("excelInput");
+    const tableContainer = document.getElementById("tableContainer");
+    const excelInfo = document.getElementById("excelInfo");
+
+    excelInput.addEventListener("change", function () {
+      const file = this.files[0];
+
+      if (!file) {
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        const data = new Uint8Array(event.target.result);
+        const workbook = XLSX.read(data, { type: "array" });
+
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+
+        const rows = XLSX.utils.sheet_to_json(worksheet, {
+          header: 1,
+          defval: ""
+        });
+
+        excelInfo.style.display = "block";
+        excelInfo.innerHTML = `
+          <strong>Файлын нэр:</strong> ${file.name}<br>
+          <strong>Sheet нэр:</strong> ${firstSheetName}<br>
+          <strong>Нийт мөр:</strong> ${rows.length}
+        `;
+
+        if (rows.length === 0) {
+          tableContainer.innerHTML = `
+            <p class="empty-text text-center mt-3">
+              Excel file хоосон байна.
+            </p>
+          `;
+          return;
+        }
+
+        let table = "<table>";
+
+        rows.forEach(function (row, rowIndex) {
+          table += "<tr>";
+
+          row.forEach(function (cell) {
+            if (rowIndex === 0) {
+              table += `<th>${cell}</th>`;
+            } else {
+              table += `<td>${cell}</td>`;
+            }
+          });
+
+          table += "</tr>";
+        });
+
+        table += "</table>";
+
+        tableContainer.innerHTML = table;
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+  </script>
+</body>
+</html>

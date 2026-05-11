@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Хэрэглэгчийн бүртгэл</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body{
+      min-height: 100vh;
+      background: linear-gradient(120deg, #0b0b0b, #1a1a1a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    /* MAIN CARD */
+    .container{
+      width: 100%;
+      max-width: 1150px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 18px;
+      padding: 35px;
+      box-shadow: 0px 15px 40px rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.4);
+      backdrop-filter: blur(10px);
+    }
+
+    /* HEADER TITLE */
+    .title{
+      text-align: center;
+      font-size: 42px;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 35px;
+      letter-spacing: 1px;
+    }
+
+    /* GRID LAYOUT */
+    .main{
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    /* FORM CARD */
+    .form-box{
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.08);
+      border: 1px solid #eaeaea;
+    }
+
+    .form-box h2{
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #222;
+    }
+
+    .input-group{
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .form-box input{
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 12px;
+      border: 2px solid #dce9ff;
+      background: #f8fbff;
+      font-size: 18px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .form-box input:focus{
+      border-color: #2d8cff;
+      box-shadow: 0px 0px 0px 4px rgba(45,140,255,0.2);
+    }
+
+    .form-box input::placeholder{
+      color: #999;
+      font-weight: 600;
+    }
+
+    /* BUTTON */
+    .btn{
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(90deg, #2d8cff, #00c6ff);
+      color: white;
+      transition: 0.25s;
+      box-shadow: 0px 10px 20px rgba(0, 150, 255, 0.35);
+    }
+
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0px 15px 25px rgba(0, 150, 255, 0.45);
+    }
+
+    /* TABLE CARD */
+    .table-box{
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.08);
+      border: 1px solid #eaeaea;
+      overflow-x: auto;
+    }
+
+    .table-box h2{
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #222;
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    th{
+      background: linear-gradient(90deg, #2d8cff, #00c6ff);
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td{
+      padding: 16px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      border-bottom: 1px solid #eaeaea;
+      color: #222;
+    }
+
+    tr:hover td{
+      background: #f5fbff;
+    }
+
+    /* DELETE BUTTON */
+    .delete-btn{
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      background: #ffe5e5;
+      cursor: pointer;
+      border: 1px solid #ffbaba;
+      transition: 0.2s;
+      font-size: 20px;
+      font-weight: 900;
+      color: red;
+    }
+
+    .delete-btn:hover{
+      background: #ffcccc;
+      transform: scale(1.05);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 900px){
+      .main{
+        grid-template-columns: 1fr;
+      }
+
+      .title{
+        font-size: 32px;
+      }
+
+      .form-box, .table-box{
+        padding: 18px;
+      }
+    }
+
+    @media(max-width: 500px){
+      .btn{
+        font-size: 18px;
+        padding: 14px;
+      }
+
+      .form-box input{
+        font-size: 16px;
+        padding: 14px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="title">Хэрэглэгчийн бүртгэл</div>
+
+    <div class="main">
+
+      <!-- FORM -->
+      <div class="form-box">
+        <h2>Мэдээлэл оруулах</h2>
+
+        <div class="input-group">
+          <input type="text" placeholder="Овог..." />
+          <input type="text" placeholder="Нэр..." />
+          <input type="number" placeholder="Нас..." />
+        </div>
+
+        <button class="btn">Бүртгэх</button>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-box">
+        <h2>Бүртгэлийн жагсаалт</h2>
+
+        <table>
+          <tr>
+            <th>№</th>
+            <th>Овог</th>
+            <th>Нэр</th>
+            <th>Нас</th>
+            <th>Үйлдэл</th>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td>БАТ</td>
+            <td>БОЛД</td>
+            <td>30</td>
+            <td><span class="delete-btn">✖</span></td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>САРУУЛ</td>
+            <td>ТЭМҮҮЛЭН</td>
+            <td>22</td>
+            <td><span class="delete-btn">✖</span></td>
+          </tr>
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
